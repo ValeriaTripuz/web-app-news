@@ -7,8 +7,7 @@ on the necessary topics, as well as using filters to find the most relevant news
 
 ## Tools
 
-- React
-- TypeScript
-- Postman
-- Styled Components
-- Material UI
+-   React
+-   TypeScript
+-   Styled Components
+-   Material UI
