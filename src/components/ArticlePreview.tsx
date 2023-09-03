@@ -1,9 +1,6 @@
 import React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
-import Skeleton from "@mui/material/Skeleton";
-import Button from "@mui/material/Button";
-// import PropTypes from "prop-types";
+import { Grid, Skeleton, Button } from "@mui/material";
 
 const ArticlePreviewWrapper = styled("div")(() => ({
   margin: "2rem auto",
@@ -19,10 +16,6 @@ const CSSButton = styled(Button)(() => ({
   marginTop: "1rem",
 }));
 
-// ArticlePreview.propTypes = {
-//   title: PropTypes.string,
-// };
-
 export interface StandardComponentProps {
   title: string;
   image: string;
@@ -31,19 +24,19 @@ export interface StandardComponentProps {
 function ArticlePreview({ title, image }: StandardComponentProps) {
   return (
     <ArticlePreviewWrapper>
-      <Grid container spacing={3} padding="2rem 2rem">
+      <Grid container spacing={3} padding="2rem">
         <Grid item xs>
           <Item>
-            {image}
             <Skeleton
               variant="rounded"
               sx={{ width: "100%", height: "35vh" }}
             />
+            {image}
           </Item>
         </Grid>
         <Grid item xs={6}>
           <Item sx={{ textAlign: "left", padding: "0 1rem" }}>
-            {title}
+            <h3>{title}</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
               molestias accusamus porro laudantium dignissimos! Labore porro
