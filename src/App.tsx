@@ -1,17 +1,30 @@
 import React from "react";
 import "./App.css";
-// import Button from "@mui/material/Button";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#82A185",
+    },
+    secondary: {
+      main: "#B8D192",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Header />
+        <Main />
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 
