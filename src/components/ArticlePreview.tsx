@@ -11,9 +11,14 @@ const Item = styled("div")(() => ({
   alignItems: "center",
 }));
 
-const CSSButton = styled(Button)(() => ({
+const CSSButton = styled(Button)(({ theme }) => ({
   width: "18vh",
   marginTop: "1rem",
+  background: alpha(theme.palette.primary.light, 0.5),
+  "&:hover": {
+    color: theme.palette.common.white,
+    background: theme.palette.primary.main,
+  },
 }));
 
 export interface StandardComponentProps {
