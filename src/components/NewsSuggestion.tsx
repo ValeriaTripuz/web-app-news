@@ -14,6 +14,11 @@ const Item = styled("div")(() => ({
 const CSSButton = styled(Button)(() => ({
   width: "20vh",
   marginTop: "1rem",
+  // color: theme.palette.primary.main,
+  // "&: hover": {
+  //   background: theme.palette.primary.light,
+  //   color: theme.palette.common.white,
+  // },
 }));
 
 export interface StandardComponentProps {
