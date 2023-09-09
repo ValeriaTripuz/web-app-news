@@ -1,6 +1,13 @@
 import React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import { AppBar, Toolbar, Typography, InputBase } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  InputBase,
+  Button,
+  Popover,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 
@@ -49,7 +56,26 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const PopoverWrapper = styled("div")(() => ({
+  width: "100vh",
+  height: "30vh",
+}));
+
 function Header() {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
   return (
     <AppBar position="relative">
       <HeaderWrapper>
@@ -71,7 +97,34 @@ function Header() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <FilterAltOutlinedIcon />
+
+          <div>
+            <Button
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleClick}
+            >
+              <FilterAltOutlinedIcon />
+            </Button>
+
+            <Popover
+              sx={{ top: "1rem" }}
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+            >
+              <PopoverWrapper>
+                <Typography sx={{ p: 2 }}>
+                  The content of the Popover.
+                </Typography>
+              </PopoverWrapper>
+            </Popover>
+          </div>
         </Toolbar>
       </HeaderWrapper>
     </AppBar>
