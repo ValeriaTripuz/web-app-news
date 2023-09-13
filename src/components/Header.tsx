@@ -67,7 +67,6 @@ const MenueWrapper = styled("div")(({ theme }) => ({
   paddingTop: "1rem",
   margin: "1rem auto",
   marginBottom: "0",
-  transition: "opacity 300ms ease-in",
 }));
 
 const AutocompleteItem = styled(Autocomplete)(({ theme }) => ({
