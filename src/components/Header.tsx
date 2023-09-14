@@ -22,7 +22,7 @@ const HeaderWrapper = styled("div")(() => ({
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.white, 0.2),
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
@@ -67,7 +67,6 @@ const MenueWrapper = styled("div")(({ theme }) => ({
   paddingTop: "1rem",
   margin: "1rem auto",
   marginBottom: "0",
-  transition: "opacity 300ms ease-in",
 }));
 
 const AutocompleteItem = styled(Autocomplete)(({ theme }) => ({
@@ -83,7 +82,6 @@ const ButtonItem = styled(Button)(({ theme }) => ({
 const Item = styled("div")(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: "center",
-  // color: theme.palette.text.secondary,
 }));
 
 function Header() {
