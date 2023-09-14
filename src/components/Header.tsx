@@ -82,7 +82,6 @@ const ButtonItem = styled(Button)(({ theme }) => ({
 const Item = styled("div")(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: "center",
-  // color: theme.palette.text.secondary,
 }));
 
 function Header() {
