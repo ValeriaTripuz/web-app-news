@@ -7,7 +7,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 
 const FooterWrapper = styled("div")(({ theme }) => ({
   position: "relative",
-  height: "15vh",
+  height: "8vh",
+  padding: "2rem 0",
   background: theme.palette.primary.main,
 }));
 
@@ -31,7 +32,6 @@ const Item = styled("div")(() => ({
 }));
 
 const ContactsWrapper = styled("div")(() => ({
-  position: "relative",
   width: "10rem",
 }));
 
@@ -39,7 +39,7 @@ function Footer() {
   return (
     <FooterWrapper>
       <Toolbar variant="dense">
-        <Grid container spacing={10} padding="0 5rem">
+        <Grid container padding="0 5vh">
           <Grid item xs>
             <Item>
               <IconsWrapper>
