@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import {
-  AppBar,
   Toolbar,
   Typography,
   InputBase,
@@ -13,10 +12,11 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 
-const HeaderWrapper = styled("div")(() => ({
-  position: "relative",
+const HeaderWrapper = styled("div")(({ theme }) => ({
   height: "fit-content",
   padding: "1rem 0",
+  top: "0",
+  background: theme.palette.primary.main,
 }));
 
 const Search = styled("div")(({ theme }) => ({
@@ -87,120 +87,118 @@ const Item = styled("div")(({ theme }) => ({
 function Header() {
   const [isOpen, setOpen] = useState(false);
   return (
-    <AppBar position="relative">
-      <HeaderWrapper>
-        <Toolbar variant="dense">
-          <Typography
-            variant="h5"
-            color="inherit"
-            component="div"
-            margin="0.5rem"
+    <HeaderWrapper>
+      <Toolbar variant="dense">
+        <Typography
+          variant="h5"
+          color="inherit"
+          component="div"
+          margin="0.5rem"
+        >
+          Logo
+        </Typography>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search"
+            inputProps={{ "aria-label": "search" }}
+          />
+        </Search>
+        <ButtonItem
+          variant="contained"
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
+        >
+          <FilterAltOutlinedIcon />
+        </ButtonItem>
+      </Toolbar>
+      {isOpen && (
+        <MenueWrapper>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            Logo
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <ButtonItem
-            variant="contained"
-            onClick={() => {
-              setOpen(!isOpen);
-            }}
-          >
-            <FilterAltOutlinedIcon />
-          </ButtonItem>
-        </Toolbar>
-        {isOpen && (
-          <MenueWrapper>
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-              <Grid item xs={2} sm={4} md={4}>
-                <Item>
-                  <AutocompleteItem
-                    disablePortal
-                    id="combo-box-demo"
-                    options={opt}
-                    sx={{ width: 400 }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Country" />
-                    )}
-                  />
-                </Item>
-              </Grid>
-              <Grid item xs={2} sm={4} md={4}>
-                <Item>
-                  <AutocompleteItem
-                    disablePortal
-                    id="combo-box-demo"
-                    options={opt}
-                    sx={{ width: 400 }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Topic" />
-                    )}
-                  />
-                </Item>
-              </Grid>
-              <Grid item xs={2} sm={4} md={4}>
-                <Item>
-                  <AutocompleteItem
-                    disablePortal
-                    id="combo-box-demo"
-                    options={opt}
-                    sx={{ width: 400 }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Date" />
-                    )}
-                  />
-                </Item>
-              </Grid>
-              <Grid item xs={2} sm={4} md={4}>
-                <Item>
-                  <AutocompleteItem
-                    disablePortal
-                    id="combo-box-demo"
-                    options={opt}
-                    sx={{ width: 400 }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Language" />
-                    )}
-                  />
-                </Item>
-              </Grid>
-              <Grid item xs={2} sm={4} md={4}>
-                <Item>
-                  <AutocompleteItem
-                    disablePortal
-                    id="combo-box-demo"
-                    options={opt}
-                    sx={{ width: 400 }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Length" />
-                    )}
-                  />
-                </Item>
-              </Grid>
-              <Grid item xs={2} sm={4} md={4}>
-                <Item>
-                  {" "}
-                  <ButtonItem sx={{ padding: "0.8rem 1.5rem" }}>
-                    Search
-                  </ButtonItem>
-                </Item>
-              </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: 400 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Country" />
+                  )}
+                />
+              </Item>
             </Grid>
-          </MenueWrapper>
-        )}
-      </HeaderWrapper>
-    </AppBar>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: 400 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Topic" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: 400 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Date" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: 400 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Language" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: 400 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Length" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                {" "}
+                <ButtonItem sx={{ padding: "0.8rem 1.5rem" }}>
+                  Search
+                </ButtonItem>
+              </Item>
+            </Grid>
+          </Grid>
+        </MenueWrapper>
+      )}
+    </HeaderWrapper>
   );
 }
 
