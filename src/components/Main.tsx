@@ -24,6 +24,7 @@ function Main() {
         <ArticlePreview title={"Title 1"} image={"Image 1"}></ArticlePreview>
         <ArticlePreview title={"Title 2"} image={"Image 2"}></ArticlePreview>
         <ArticlePreview title={"Title 3"} image={"Image 3"}></ArticlePreview>
+
         <h1>
           <b>NEW</b>
         </h1>

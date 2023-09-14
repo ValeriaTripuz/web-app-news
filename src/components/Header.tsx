@@ -61,12 +61,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const MenueWrapper = styled("div")(({ theme }) => ({
   position: "relative",
-  height: "15rem",
+  height: "25vh",
   background: alpha(theme.palette.common.white, 0.6),
   width: "96%",
   paddingTop: "1rem",
   margin: "1rem auto",
   marginBottom: "0",
+  "@media (max-width: 768px)": {
+    height: "35vh",
+  },
 }));
 
 const AutocompleteItem = styled(Autocomplete)(({ theme }) => ({
@@ -128,7 +131,7 @@ function Header() {
                   disablePortal
                   id="combo-box-demo"
                   options={opt}
-                  sx={{ width: 400 }}
+                  sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Country" />
                   )}
@@ -141,7 +144,7 @@ function Header() {
                   disablePortal
                   id="combo-box-demo"
                   options={opt}
-                  sx={{ width: 400 }}
+                  sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Topic" />
                   )}
@@ -154,7 +157,7 @@ function Header() {
                   disablePortal
                   id="combo-box-demo"
                   options={opt}
-                  sx={{ width: 400 }}
+                  sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Date" />
                   )}
@@ -167,7 +170,7 @@ function Header() {
                   disablePortal
                   id="combo-box-demo"
                   options={opt}
-                  sx={{ width: 400 }}
+                  sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Language" />
                   )}
@@ -180,7 +183,7 @@ function Header() {
                   disablePortal
                   id="combo-box-demo"
                   options={opt}
-                  sx={{ width: 400 }}
+                  sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Length" />
                   )}
@@ -189,7 +192,6 @@ function Header() {
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
               <Item>
-                {" "}
                 <ButtonItem sx={{ padding: "0.8rem 1.5rem" }}>
                   Search
                 </ButtonItem>
