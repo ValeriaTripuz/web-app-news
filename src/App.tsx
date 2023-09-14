@@ -1,8 +1,8 @@
 import React from "react";
-import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import { styled } from "@mui/material/styles";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { createTheme, ThemeProvider } from "@mui/material";
@@ -26,17 +26,21 @@ const theme = createTheme({
   },
 });
 
+const AppWrapper = styled("div")(() => ({
+  margin: "-8px",
+}));
+
 function App() {
   const data = useQuery("language", fetchCoins);
 
   console.log(data);
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <AppWrapper>
         <Header />
         <Main />
         <Footer />
-      </div>
+      </AppWrapper>
     </ThemeProvider>
   );
 }
