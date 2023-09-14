@@ -15,7 +15,7 @@ import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 const HeaderWrapper = styled("div")(({ theme }) => ({
   height: "fit-content",
   padding: "1rem 0",
-  top: "0",
+  // top: "0",
   background: theme.palette.primary.main,
 }));
 
@@ -61,14 +61,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const MenueWrapper = styled("div")(({ theme }) => ({
   position: "relative",
-  height: "25vh",
+  height: "35vh",
   background: alpha(theme.palette.common.white, 0.6),
   width: "96%",
   paddingTop: "1rem",
   margin: "1rem auto",
   marginBottom: "0",
   "@media (max-width: 768px)": {
-    height: "35vh",
+    height: "45vh",
   },
 }));
 

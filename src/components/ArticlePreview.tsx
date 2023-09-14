@@ -11,13 +11,10 @@ const ArticlePreviewWrapper = styled(Grid)(() => ({
     flexDirection: "column",
     flexWrap: "wrap",
     width: "100%",
-    // justifyContent: "space-around",
   },
 }));
 
 const Item = styled("div")(() => ({
-  // textAlign: "center",
-  // alignItems: "center",
   "@media (max-width: 767px)": {
     fontSize: "15px",
     width: "35vh",
