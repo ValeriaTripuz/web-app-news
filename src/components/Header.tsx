@@ -15,7 +15,6 @@ import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 const HeaderWrapper = styled("div")(({ theme }) => ({
   height: "fit-content",
   padding: "1rem 0",
-  // top: "0",
   background: theme.palette.primary.main,
 }));
 

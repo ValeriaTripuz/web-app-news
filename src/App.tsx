@@ -5,7 +5,8 @@ import Footer from "./components/Footer";
 import { styled } from "@mui/material/styles";
 import { useQuery } from "react-query";
 import axios from "axios";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
+import theme from "./config/theme";
 
 export async function fetchCoins<T>(): Promise<T> {
   const { data } = await axios.get(
@@ -14,17 +15,6 @@ export async function fetchCoins<T>(): Promise<T> {
 
   return data.results;
 }
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#82A185",
-    },
-    secondary: {
-      main: "#B8D192",
-    },
-  },
-});
 
 const AppWrapper = styled("div")(() => ({
   margin: "-8px",
