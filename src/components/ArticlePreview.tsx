@@ -2,28 +2,23 @@ import React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import { Grid, Skeleton, Button } from "@mui/material";
 
-const ArticlePreviewWrapper = styled(Grid)(() => ({
-  padding: "2rem",
+const ArticlePreviewWrapper = styled(Grid)(({ theme }) => ({
   margin: "2rem auto",
-  width: "100%",
+  width: "fit-content",
+  padding: theme.spacing(3),
   "@media (max-width: 767px)": {
     display: "flex",
     flexDirection: "column",
     flexWrap: "wrap",
-    width: "100%",
-    // justifyContent: "space-around",
+    padding: "0",
   },
 }));
 
 const Item = styled("div")(() => ({
-  // textAlign: "center",
-  // alignItems: "center",
   "@media (max-width: 767px)": {
     fontSize: "15px",
     width: "35vh",
-    padding: "0 1rem",
-    paddingLeft: "0",
-    alignItems: "center",
+    padding: "0",
   },
 }));
 
@@ -41,7 +36,6 @@ const CSSButton = styled(Button)(({ theme }) => ({
 }));
 
 const ImageSkeleton = styled(Skeleton)(() => ({
-  width: "100%",
   height: "30vh",
 }));
 
@@ -52,7 +46,7 @@ export interface StandardComponentProps {
 
 function ArticlePreview({ title, image }: StandardComponentProps) {
   return (
-    <ArticlePreviewWrapper container spacing={3}>
+    <ArticlePreviewWrapper container>
       <Grid item xs>
         <Item>
           <ImageSkeleton variant="rounded" />
