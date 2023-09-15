@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import {
-  AppBar,
   Toolbar,
   Typography,
   InputBase,
   Button,
-  Popover,
+  Grid,
+  Autocomplete,
+  TextField,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 
-const HeaderWrapper = styled("div")(() => ({
-  position: "relative",
-  height: "10vh",
-  top: "2vh",
+const HeaderWrapper = styled("div")(({ theme }) => ({
+  height: "fit-content",
+  padding: "1rem 0",
+  background: theme.palette.primary.main,
 }));
 
 const Search = styled("div")(({ theme }) => ({
@@ -49,11 +50,40 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "100%",
     [theme.breakpoints.up("md")]: {
       width: "20ch",
     },
   },
+  width: "100%",
+  background: alpha(theme.palette.common.white, 0.8),
+}));
+
+const MenueWrapper = styled("div")(({ theme }) => ({
+  position: "relative",
+  height: "35vh",
+  background: alpha(theme.palette.common.white, 0.6),
+  width: "96%",
+  paddingTop: "1rem",
+  margin: "1rem auto",
+  marginBottom: "0",
+  "@media (max-width: 768px)": {
+    height: "45vh",
+  },
+}));
+
+const AutocompleteItem = styled(Autocomplete)(({ theme }) => ({
+  background: alpha(theme.palette.common.white, 0.5),
+  borderRadius: theme.shape.borderRadius,
+}));
+
+const ButtonItem = styled(Button)(({ theme }) => ({
+  background: alpha(theme.palette.common.white, 0.8),
+  color: "black",
+}));
+
+const Item = styled("div")(({ theme }) => ({
+  padding: theme.spacing(2),
+  textAlign: "center",
 }));
 
 const PopoverWrapper = styled("div")(() => ({
@@ -62,73 +92,127 @@ const PopoverWrapper = styled("div")(() => ({
 }));
 
 function Header() {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
-  );
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const [isOpen, setOpen] = useState(false);
   return (
-    <AppBar position="relative">
-      <HeaderWrapper>
-        <Toolbar variant="dense">
-          <Typography
-            variant="h5"
-            color="inherit"
-            component="div"
-            margin="0.5rem"
+    <HeaderWrapper>
+      <Toolbar variant="dense">
+        <Typography
+          variant="h5"
+          color="inherit"
+          component="div"
+          margin="0.5rem"
+        >
+          Logo
+        </Typography>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search"
+            inputProps={{ "aria-label": "search" }}
+          />
+        </Search>
+        <ButtonItem
+          variant="contained"
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
+        >
+          <FilterAltOutlinedIcon />
+        </ButtonItem>
+      </Toolbar>
+      {isOpen && (
+        <MenueWrapper>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            Logo
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-
-          <div>
-            <Button
-              aria-describedby={id}
-              variant="contained"
-              onClick={handleClick}
-            >
-              <FilterAltOutlinedIcon />
-            </Button>
-
-            <Popover
-              sx={{ top: "1rem" }}
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-            >
-              <PopoverWrapper>
-                <Typography sx={{ p: 2 }}>
-                  The content of the Popover.
-                </Typography>
-              </PopoverWrapper>
-            </Popover>
-          </div>
-        </Toolbar>
-      </HeaderWrapper>
-    </AppBar>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: "100%" }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Country" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: "100%" }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Topic" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: "100%" }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Date" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: "100%" }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Language" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <AutocompleteItem
+                  disablePortal
+                  id="combo-box-demo"
+                  options={opt}
+                  sx={{ width: "100%" }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Length" />
+                  )}
+                />
+              </Item>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4}>
+              <Item>
+                <ButtonItem sx={{ padding: "0.8rem 1.5rem" }}>
+                  Search
+                </ButtonItem>
+              </Item>
+            </Grid>
+          </Grid>
+        </MenueWrapper>
+      )}
+    </HeaderWrapper>
   );
 }
+
+const opt = [
+  { label: "Belarus" },
+  { label: "Russia" },
+  { label: "Ukraine" },
+  { label: "USA" },
+];
 
 export default Header;
