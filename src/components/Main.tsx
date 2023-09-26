@@ -23,13 +23,39 @@ const TitleNewSuggestions = styled("h1")(() => ({
   padding: "1rem 0",
 }));
 
-function Main() {
+export interface ArticlePreviewProps {
+  dataAPI: any[];
+}
+
+function Main({ dataAPI }: ArticlePreviewProps) {
   return (
     <>
       <MainWrapper>
-        <ArticlePreview title={"Title 1"} image={"Image 1"}></ArticlePreview>
-        <ArticlePreview title={"Title 2"} image={"Image 2"}></ArticlePreview>
-        <ArticlePreview title={"Title 3"} image={"Image 3"}></ArticlePreview>
+        <ArticlePreview
+          title={dataAPI[30].title}
+          image={dataAPI[30].image_url}
+          content={dataAPI[30].content}
+        ></ArticlePreview>
+        <ArticlePreview
+          title={dataAPI[23].title}
+          image={dataAPI[23].image_url}
+          content={dataAPI[23].content}
+        ></ArticlePreview>
+        <ArticlePreview
+          title={dataAPI[12].title}
+          image={dataAPI[12].image_url}
+          content={dataAPI[12].content}
+        ></ArticlePreview>
+        <ArticlePreview
+          title={dataAPI[46].title}
+          image={dataAPI[46].image_url}
+          content={dataAPI[46].content}
+        ></ArticlePreview>
+        <ArticlePreview
+          title={dataAPI[38].title}
+          image={dataAPI[38].image_url}
+          content={dataAPI[38].content}
+        ></ArticlePreview>
 
         <TitleNewSuggestions>
           <b>NEW</b>

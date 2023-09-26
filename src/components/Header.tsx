@@ -18,7 +18,7 @@ const HeaderWrapper = styled("div")(({ theme }) => ({
   background: theme.palette.primary.main,
 }));
 
-const Search = styled("div")(({ theme }) => ({
+const SearchInputField = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.2),
@@ -58,7 +58,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   background: alpha(theme.palette.common.white, 0.8),
 }));
 
-const MenueWrapper = styled("div")(({ theme }) => ({
+const FilterDropdownWrapper = styled("div")(({ theme }) => ({
   position: "relative",
   height: "35vh",
   background: alpha(theme.palette.common.white, 0.6),
@@ -71,23 +71,23 @@ const MenueWrapper = styled("div")(({ theme }) => ({
   },
 }));
 
-const AutocompleteItem = styled(Autocomplete)(({ theme }) => ({
+const AutocompleteForFilterInputs = styled(Autocomplete)(({ theme }) => ({
   background: alpha(theme.palette.common.white, 0.5),
   borderRadius: theme.shape.borderRadius,
 }));
 
-const ButtonItem = styled(Button)(({ theme }) => ({
+const HeaderButtons = styled(Button)(({ theme }) => ({
   background: alpha(theme.palette.common.white, 0.8),
   color: "black",
 }));
 
-const Item = styled("div")(({ theme }) => ({
+const FilterInputField = styled("div")(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: "center",
 }));
 
 function Header() {
-  const [isOpen, setOpen] = useState(false);
+  const [isFilterDropdownOpen, setisFilterDropdownOpen] = useState(false);
   return (
     <HeaderWrapper>
       <Toolbar variant="dense">
@@ -99,7 +99,7 @@ function Header() {
         >
           Logo
         </Typography>
-        <Search>
+        <SearchInputField>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -107,103 +107,103 @@ function Header() {
             placeholder="Search"
             inputProps={{ "aria-label": "search" }}
           />
-        </Search>
-        <ButtonItem
+        </SearchInputField>
+        <HeaderButtons
           variant="contained"
           onClick={() => {
-            setOpen(!isOpen);
+            setisFilterDropdownOpen(!isFilterDropdownOpen);
           }}
         >
           <FilterAltOutlinedIcon />
-        </ButtonItem>
+        </HeaderButtons>
       </Toolbar>
-      {isOpen && (
-        <MenueWrapper>
+      {isFilterDropdownOpen && (
+        <FilterDropdownWrapper>
           <Grid
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={2} sm={4} md={4}>
-              <Item>
-                <AutocompleteItem
+              <FilterInputField>
+                <AutocompleteForFilterInputs
                   disablePortal
                   id="combo-box-demo"
-                  options={opt}
+                  options={countriesList}
                   sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Country" />
                   )}
                 />
-              </Item>
+              </FilterInputField>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
-              <Item>
-                <AutocompleteItem
+              <FilterInputField>
+                <AutocompleteForFilterInputs
                   disablePortal
                   id="combo-box-demo"
-                  options={opt}
+                  options={countriesList}
                   sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Topic" />
                   )}
                 />
-              </Item>
+              </FilterInputField>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
-              <Item>
-                <AutocompleteItem
+              <FilterInputField>
+                <AutocompleteForFilterInputs
                   disablePortal
                   id="combo-box-demo"
-                  options={opt}
+                  options={countriesList}
                   sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Date" />
                   )}
                 />
-              </Item>
+              </FilterInputField>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
-              <Item>
-                <AutocompleteItem
+              <FilterInputField>
+                <AutocompleteForFilterInputs
                   disablePortal
                   id="combo-box-demo"
-                  options={opt}
+                  options={countriesList}
                   sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Language" />
                   )}
                 />
-              </Item>
+              </FilterInputField>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
-              <Item>
-                <AutocompleteItem
+              <FilterInputField>
+                <AutocompleteForFilterInputs
                   disablePortal
                   id="combo-box-demo"
-                  options={opt}
+                  options={countriesList}
                   sx={{ width: "100%" }}
                   renderInput={(params) => (
                     <TextField {...params} label="Length" />
                   )}
                 />
-              </Item>
+              </FilterInputField>
             </Grid>
             <Grid item xs={2} sm={4} md={4}>
-              <Item>
-                <ButtonItem sx={{ padding: "0.8rem 1.5rem" }}>
+              <FilterInputField>
+                <HeaderButtons sx={{ padding: "0.8rem 1.5rem" }}>
                   Search
-                </ButtonItem>
-              </Item>
+                </HeaderButtons>
+              </FilterInputField>
             </Grid>
           </Grid>
-        </MenueWrapper>
+        </FilterDropdownWrapper>
       )}
     </HeaderWrapper>
   );
 }
 
-const opt = [
+const countriesList = [
   { label: "Belarus" },
   { label: "Russia" },
   { label: "Ukraine" },

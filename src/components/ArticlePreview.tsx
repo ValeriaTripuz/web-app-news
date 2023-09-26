@@ -14,7 +14,7 @@ const ArticlePreviewWrapper = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const Item = styled("div")(() => ({
+const ArticlePreviewElements = styled("div")(() => ({
   "@media (max-width: 767px)": {
     fontSize: "15px",
     width: "35vh",
@@ -22,7 +22,7 @@ const Item = styled("div")(() => ({
   },
 }));
 
-const CSSButton = styled(Button)(({ theme }) => ({
+const ArticlePreviewButton = styled(Button)(({ theme }) => ({
   width: "18vh",
   marginTop: "1rem",
   background: alpha(theme.palette.primary.light, 0.5),
@@ -39,50 +39,47 @@ const ImageSkeleton = styled(Skeleton)(() => ({
   height: "30vh",
 }));
 
-export interface StandardComponentProps {
+const ArticleImage = styled("img")(() => ({
+  maxHeight: "20vh",
+}));
+
+const ContentBox = styled("p")(() => ({
+  maxHeight: "16.8vh",
+
+  overflow: "hidden",
+}));
+
+export interface ArticlePreviewProps {
   title: string;
   image: string;
+  content: string;
 }
 
-function ArticlePreview({ title, image }: StandardComponentProps) {
+function ArticlePreview({ title, image, content }: ArticlePreviewProps) {
   return (
     <ArticlePreviewWrapper container>
       <Grid item xs>
-        <Item>
-          <ImageSkeleton variant="rounded" />
-          {image}
-        </Item>
+        <ArticlePreviewElements>
+          {image ? (
+            <ArticleImage src={image} alt="element" />
+          ) : (
+            <ImageSkeleton variant="rounded" />
+          )}
+        </ArticlePreviewElements>
       </Grid>
       <Grid item xs={6}>
-        <Item sx={{ textAlign: "left", padding: "0 1rem" }}>
+        <ArticlePreviewElements sx={{ textAlign: "left", padding: "0 1rem" }}>
           <h3>{title}</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-            molestias accusamus porro laudantium dignissimos! Labore porro
-            molestias tempora quae voluptates voluptate, fugiat similique, dolor
-            eos, perspiciatis provident officiis dolore sint. Lorem ipsum, dolor
-            sit amet consectetur adipisicing elit. Illum repellendus est nihil
-            similique fugit delectus non atque corporis fugiat asperiores
-            impedit eos, consequuntur quisquam odit, minima molestiae nostrum
-            vero aperiam. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Voluptas sit ipsam sequi sint sapiente error ipsa quidem ex
-            illum aspernatur, placeat cumque quam, pariatur minus nihil amet
-            odit excepturi earum. Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Magni, velit esse dicta placeat dolore voluptates
-            iste excepturi commodi eum? Voluptates magni necessitatibus dolorem
-            debitis excepturi minus. Culpa ut debitis temporibus? Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Maxime reiciendis
-            officia neque accusamus fuga omnis aspernatur eaque, repudiandae
-            delectus. Repellat quam quos neque! Corrupti amet et laborum dolorem
-            unde architecto?
-          </p>
-        </Item>
+          <ContentBox>{content}</ContentBox>
+        </ArticlePreviewElements>
       </Grid>
       <Grid item xs={2.5}>
-        <Item sx={{ display: "flex", flexDirection: "column" }}>
-          <CSSButton variant="contained">Read</CSSButton>
-          <CSSButton variant="contained">Hide</CSSButton>
-        </Item>
+        <ArticlePreviewElements
+          sx={{ display: "flex", flexDirection: "column" }}
+        >
+          <ArticlePreviewButton variant="contained">Read</ArticlePreviewButton>
+          <ArticlePreviewButton variant="contained">Hide</ArticlePreviewButton>
+        </ArticlePreviewElements>
       </Grid>
     </ArticlePreviewWrapper>
   );
