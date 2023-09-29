@@ -45,17 +45,20 @@ const ArticleImage = styled("img")(() => ({
 
 const ContentBox = styled("p")(() => ({
   maxHeight: "16.8vh",
-
   overflow: "hidden",
 }));
 
-export interface ArticlePreviewProps {
+export interface ArticlePreviewPropsInterface {
   title: string;
   image: string;
   content: string;
 }
 
-function ArticlePreview({ title, image, content }: ArticlePreviewProps) {
+function ArticlePreview({
+  title,
+  image,
+  content,
+}: ArticlePreviewPropsInterface) {
   return (
     <ArticlePreviewWrapper container>
       <Grid item xs>
