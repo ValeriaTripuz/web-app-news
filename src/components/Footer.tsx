@@ -12,13 +12,13 @@ const FooterWrapper = styled("div")(({ theme }) => ({
   background: theme.palette.primary.main,
 }));
 
-const IconsWrapper = styled("div")(() => ({
+const FooterIconsWrapper = styled("div")(() => ({
   display: "flex",
   flexDirection: "column",
   width: "10vh",
 }));
 
-const SocialNetworksWrapper = styled("div")(() => ({
+const SocialNetworksIconsWrapper = styled("div")(() => ({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
@@ -26,12 +26,12 @@ const SocialNetworksWrapper = styled("div")(() => ({
   marginTop: "0.5rem",
 }));
 
-const Item = styled("div")(() => ({
+const FooterContentItem = styled("div")(() => ({
   textAlign: "center",
   alignItems: "center",
 }));
 
-const ContactsWrapper = styled("div")(() => ({
+const FooterContactsWrapper = styled("div")(() => ({
   width: "10rem",
 }));
 
@@ -41,8 +41,8 @@ function Footer() {
       <Toolbar variant="dense">
         <Grid container padding="0 5vh">
           <Grid item xs>
-            <Item>
-              <IconsWrapper>
+            <FooterContentItem>
+              <FooterIconsWrapper>
                 <Typography
                   variant="h5"
                   color="inherit"
@@ -51,20 +51,20 @@ function Footer() {
                 >
                   Logo
                 </Typography>
-                <SocialNetworksWrapper>
+                <SocialNetworksIconsWrapper>
                   <InstagramIcon fontSize="small" />
                   <TwitterIcon fontSize="small" />
                   <FacebookIcon fontSize="small" />
-                </SocialNetworksWrapper>
-              </IconsWrapper>
-            </Item>
+                </SocialNetworksIconsWrapper>
+              </FooterIconsWrapper>
+            </FooterContentItem>
           </Grid>
           <Grid item xs={8}>
-            <Item>
-              <ContactsWrapper>
+            <FooterContentItem>
+              <FooterContactsWrapper>
                 <h4>Contacts</h4>
-              </ContactsWrapper>
-            </Item>
+              </FooterContactsWrapper>
+            </FooterContentItem>
           </Grid>
         </Grid>
       </Toolbar>
