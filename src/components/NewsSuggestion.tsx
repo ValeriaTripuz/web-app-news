@@ -7,11 +7,11 @@ const SuggestionWrapper = styled("div")(() => ({
   padding: "2rem 1rem",
 }));
 
-const Item = styled("div")(() => ({
+const SuggestionWrapperElement = styled("div")(() => ({
   textAlign: "center",
 }));
 
-const CSSButton = styled(Button)(({ theme }) => ({
+const OpenArticleButton = styled(Button)(({ theme }) => ({
   width: "20vh",
   marginTop: "1rem",
   color: theme.palette.primary.main,
@@ -21,31 +21,31 @@ const CSSButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export interface StandardComponentProps {
+export interface NewsSuggestionPropsInterface {
   image: string;
 }
 
-function NewsSuggestion({ image }: StandardComponentProps) {
+function NewsSuggestion({ image }: NewsSuggestionPropsInterface) {
   return (
     <>
       <SuggestionWrapper>
         <Stack spacing={2} sx={{ width: "40vh" }}>
-          <Item>
+          <SuggestionWrapperElement>
             <Skeleton
               variant="rounded"
               sx={{ width: "100%", height: "35vh" }}
             />
             {image}
-          </Item>
-          <Item sx={{ textAlign: "left" }}>
+          </SuggestionWrapperElement>
+          <SuggestionWrapperElement sx={{ textAlign: "left" }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
             natus. Quaerat, dicta et. Excepturi facere nesciunt odio ab numquam
             a necessitatibus libero quasi qui, asperiores commodi maiores,
             perferendis molestiae harum.
-          </Item>
-          <Item>
-            <CSSButton>Read</CSSButton>
-          </Item>
+          </SuggestionWrapperElement>
+          <SuggestionWrapperElement>
+            <OpenArticleButton>Read</OpenArticleButton>
+          </SuggestionWrapperElement>
         </Stack>
       </SuggestionWrapper>
     </>

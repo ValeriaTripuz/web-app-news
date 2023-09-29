@@ -39,12 +39,12 @@ const ImageSkeleton = styled(Skeleton)(() => ({
   height: "30vh",
 }));
 
-export interface StandardComponentProps {
+export interface ArticlePreviewPropsInterface {
   title: string;
   image: string;
 }
 
-function ArticlePreview({ title, image }: StandardComponentProps) {
+function ArticlePreview({ title, image }: ArticlePreviewPropsInterface) {
   return (
     <ArticlePreviewWrapper container>
       <Grid item xs>
