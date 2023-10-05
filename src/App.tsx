@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
@@ -7,34 +7,35 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { ThemeProvider } from "@mui/material";
 import theme from "./config/theme";
-import DataTypes from "./components/DataTypes";
+import { NewsListType, NewsItemType } from "./types/TypesForNewsApiData";
 
 const AppWrapper = styled("div")(() => ({
   margin: "-8px",
 }));
 
-async function fetchTypes(): Promise<DataTypes> {
+async function fetchDataNews(): Promise<NewsItemType[]> {
   const res = await axios.get(
-    "https://newsdata.io/api/1/news?apikey=pub_293764b88d5708d21149137e81aa6a2714676"
+    "https://newsdata.io/api/1/news?apikey=pub_293764b88d5708d21149137e81aa6a2714676&image=1"
   );
   return res.data.results;
 }
 
 function App() {
-  const { data } = useQuery<any>({
-    queryFn: fetchTypes,
-    staleTime: 0,
+  const { isLoading, error, data } = useQuery({
+    queryFn: fetchDataNews,
   });
 
-  // For future request loading and error handling
-  // if (isLoading) return "Loading...";
-  // if (error) return "An error has occurred: " + error.message;
+  if (isLoading) return <p>Loading...</p>;
+
+  if (error) return <p>Error</p>;
 
   return (
     <ThemeProvider theme={theme}>
       <AppWrapper>
         <Header />
-        {data && <Main dataAPI={data} />}
+
+        {data && <Main newsData={data} />}
+
         <Footer />
       </AppWrapper>
     </ThemeProvider>
