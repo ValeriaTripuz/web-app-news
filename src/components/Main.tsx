@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import ArticlePreview from "./ArticlePreview";
 import NewsSuggestion from "./NewsSuggestion";
-import { NewsItemType } from "../types/TypesForNewsApiData";
+import { NewsItemType } from "../types/TypesForNewsData";
 
 const MainWrapper = styled("div")(() => ({
   position: "relative",
@@ -29,7 +29,7 @@ interface MainProps {
 }
 
 function Main({ newsData }: MainProps) {
-  const articlePreviewData = newsData.slice(0, 5);
+  const articlePreviewData = newsData.slice(0, 2);
 
   return (
     <>
