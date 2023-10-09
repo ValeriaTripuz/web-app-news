@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { ThemeProvider } from "@mui/material";
 import theme from "./config/theme";
-import { NewsListType, NewsItemType } from "./types/TypesForNewsApiData";
+import { NewsItemType } from "./types/TypesForNewsData";
 
 const AppWrapper = styled("div")(() => ({
   margin: "-8px",
