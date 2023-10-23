@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import ArticlePreview from "./ArticlePreview";
 import NewsSuggestion from "./NewsSuggestion";
+import { NewsItemType } from "../types/TypesForNewsData";
 
 const MainWrapper = styled("div")(() => ({
   position: "relative",
@@ -23,39 +24,25 @@ const TitleNewSuggestions = styled("h1")(() => ({
   padding: "1rem 0",
 }));
 
-export interface ArticlePreviewProps {
-  dataAPI: any[];
+interface MainProps {
+  newsData: NewsItemType[];
 }
 
-function Main({ dataAPI }: ArticlePreviewProps) {
+function Main({ newsData }: MainProps) {
+  const articlePreviewData = newsData.slice(0, 2);
+
   return (
     <>
       <MainWrapper>
-        <ArticlePreview
-          title={dataAPI[30].title}
-          image={dataAPI[30].image_url}
-          content={dataAPI[30].content}
-        ></ArticlePreview>
-        <ArticlePreview
-          title={dataAPI[23].title}
-          image={dataAPI[23].image_url}
-          content={dataAPI[23].content}
-        ></ArticlePreview>
-        <ArticlePreview
-          title={dataAPI[12].title}
-          image={dataAPI[12].image_url}
-          content={dataAPI[12].content}
-        ></ArticlePreview>
-        <ArticlePreview
-          title={dataAPI[46].title}
-          image={dataAPI[46].image_url}
-          content={dataAPI[46].content}
-        ></ArticlePreview>
-        <ArticlePreview
-          title={dataAPI[38].title}
-          image={dataAPI[38].image_url}
-          content={dataAPI[38].content}
-        ></ArticlePreview>
+        {articlePreviewData &&
+          articlePreviewData.map((a) => (
+            <ArticlePreview
+              key={a.article_id}
+              title={a.title}
+              image={a.image_url}
+              content={a.description}
+            ></ArticlePreview>
+          ))}
 
         <TitleNewSuggestions>
           <b>NEW</b>
