@@ -29,7 +29,7 @@ interface MainProps {
 }
 
 function Main({ newsData }: MainProps) {
-  const articlePreviewData = newsData.slice(0, 2);
+  const articlePreviewData = newsData.slice(0, 5);
 
   return (
     <>

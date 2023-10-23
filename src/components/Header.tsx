@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import logo from "../images/news_logo.png";
 
 const HeaderWrapper = styled("div")(({ theme }) => ({
   height: "fit-content",
@@ -86,6 +87,14 @@ const FilterInputField = styled("div")(({ theme }) => ({
   textAlign: "center",
 }));
 
+const LogoImg = styled("img")(() => ({
+  width: "32vh",
+  height: "auto",
+  "@media (max-width: 1200px)": {
+    width: "10vh",
+  },
+}));
+
 function Header() {
   const [isFilterDropdownOpen, setisFilterDropdownOpen] = useState(false);
   return (
@@ -97,7 +106,7 @@ function Header() {
           component="div"
           margin="0.5rem"
         >
-          Logo
+          <LogoImg src={logo} alt="Logo" />
         </Typography>
         <SearchInputField>
           <SearchIconWrapper>

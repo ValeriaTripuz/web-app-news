@@ -4,10 +4,11 @@ import { Toolbar, Typography, Grid } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import logo from "../images/news_logo.png";
 
 const FooterWrapper = styled("div")(({ theme }) => ({
   position: "relative",
-  height: "8vh",
+  height: "10vh",
   padding: "2rem 0",
   background: theme.palette.primary.main,
 }));
@@ -15,15 +16,15 @@ const FooterWrapper = styled("div")(({ theme }) => ({
 const FooterIconsWrapper = styled("div")(() => ({
   display: "flex",
   flexDirection: "column",
-  width: "10vh",
+  width: "fit-content",
 }));
 
 const SocialNetworksIconsWrapper = styled("div")(() => ({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  justifyContent: "space-between",
-  marginTop: "0.5rem",
+  justifyContent: "center",
+  margin: "0.5rem 0",
 }));
 
 const FooterContentItem = styled("div")(() => ({
@@ -33,6 +34,15 @@ const FooterContentItem = styled("div")(() => ({
 
 const FooterContactsWrapper = styled("div")(() => ({
   width: "10rem",
+}));
+
+const LogoImg = styled("img")(() => ({
+  width: "20vh",
+  height: "auto",
+  margin: 0,
+  "@media (max-width: 1200px)": {
+    width: "9vh",
+  },
 }));
 
 function Footer() {
@@ -49,7 +59,7 @@ function Footer() {
                   component="div"
                   margin="0.5rem"
                 >
-                  Logo
+                  <LogoImg src={logo} alt="Logo" />
                 </Typography>
                 <SocialNetworksIconsWrapper>
                   <InstagramIcon fontSize="small" />
